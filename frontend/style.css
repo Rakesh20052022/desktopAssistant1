@@ -1,0 +1,314 @@
+body{
+    background-color: black;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+:root {
+    --primary-color: #00AAFF;
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --input-bg: rgba(24, 24, 24, 0.66);
+    --border-color: var(--primary-color);
+    --chat-bg: #191919;
+    --sender-bg: #0045ff;
+    --receiver-border: cyan;
+    --receiver-bg: rgba(13, 202, 240, 0.08);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+body.light-mode {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --input-bg: #f8f9fa;
+    --chat-bg: #f8f9fa;
+    --sender-bg: #007bff;
+    --receiver-border: #17a2b8;
+    --receiver-bg: rgba(23, 162, 184, 0.1);
+}
+.square{
+    width: 400px; 
+    height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+.square span:nth-child(1){
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#6b72ff00 50%,#000dff3b 50%);
+    box-shadow: 0 0 50px rgb(25, 25, 255),inset 0 0 50px rgb(25, 25, 255);
+    border-radius: 30% 60% 63% 37%/40% 45% 58% 60%;
+    transition: 0.4s;
+    cursor: pointer;
+    animation: animate1 6s infinite linear;
+}
+.square span:nth-child(2){
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#6b72ff00 50%,#000dff3b 50%);
+    box-shadow: 0 0 50px rgb(25, 25, 255),inset 0 0 50px rgb(25, 25, 255);
+    border-radius: 30% 60% 63% 37%/40% 45% 58% 60%;
+    transition: 0.4s;
+    cursor: pointer;
+    animation: animate2 4s infinite linear;
+}
+.square span:nth-child(3){
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#6b72ff00 50%,#000dff3b 50%);
+    box-shadow: 0 0 50px rgb(25, 25, 255),inset 0 0 50px rgb(25, 25, 255);
+    border-radius: 30% 60% 63% 37%/40% 45% 58% 60%;
+    transition: 0.4s;
+    cursor: pointer;
+    animation: animate3 8s infinite linear;
+}
+@keyframes animate1 {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes animate2 {
+    0%{
+        transform: rotate(90deg);
+    }
+    100%{
+        transform: rotate(270deg);
+    }
+}
+@keyframes animate3 {
+    0%{
+        transform: rotate(1800deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+}
+
+#canvasOne {
+    position:absolute;
+    background: transparent;
+}
+
+
+#TextInput {
+    background-color: var(--input-bg);
+    border-color: var(--border-color);
+    box-shadow: 0 0 20px var(--primary-color);
+    inset: 0 0 0px var(--primary-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    padding: 3px 0px 3px 20px;
+    margin: 0px 20%;
+}
+
+.input-field {
+    background-color: transparent;
+    border: none;
+    width: 95%;
+    outline: none;
+    color: var(--text-color);
+    font-family: cursive;
+}
+.glow-on-hover{
+    width: 35px;
+    height: 35px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    padding: 0px;
+    margin-left: 10px;
+}
+.glow-on-hover:before{
+    content: '';
+    background: linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8,#ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}   
+.glow-on-hover:active{
+    color: #181818a8;
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.chat-canvas{
+    background-color: var(--chat-bg);
+}
+
+.settings-canvas{
+    background-color: var(--chat-bg);
+}
+
+.offcanvas-title {
+    color: var(--text-color) !important;
+}
+
+.form-label {
+    color: var(--text-color) !important;
+}
+
+.form-check-label {
+    color: var(--text-color) !important;
+}
+
+.receiver_message{
+    padding: 8px;
+    border: 2px solid var(--receiver-border);
+    border-radius: 0px 15px 15px 20px;
+    width: auto;
+    color: var(--text-color);
+    background-color: var(--receiver-bg);
+}
+
+.sender_message{
+    padding: 8px;
+    border: 1px solid var(--sender-bg);
+    border-radius: 15px 15px 0px 20px;
+    width: auto;
+    color: white;
+    background-color: var(--sender-bg);
+}
+
+.width-size{
+    max-width: 80%;
+    width: auto;
+}
+
+.svg-frame {
+  position: relative;
+  width: 455px;
+  height: 455px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: change-view 2s ease-in infinite;
+}
+
+@keyframes change-view {
+
+  0%,
+  50% {
+    transform: rotate(-0deg) skew(00deg) translateX(calc(0 * var(--i))) translateY(calc(-0px * var(--i)));
+  }
+
+  70%,
+  100% {
+    transform: rotate(-80deg) skew(30deg) translateX(calc(45px * var(--i))) translateY(calc(-35px * var(--i)));
+  }
+}
+
+svg {
+  position: absolute;
+  transition: 0.5s;
+  transform-origin: center;
+  width: 450px;
+  height: 450px;
+  fill: none;
+  animation: change-view 5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 12px #00aaff);
+}
+
+#big-centro,
+#outter1,
+#solo-lines,
+#center,
+#outter-center,
+#bottom-dots,
+#center-lines,
+#squares,
+#top-dots {
+  transform-origin: center;
+  animation: rotate 4s ease-in-out infinite alternate;
+}
+
+#big-centro {
+  animation-delay: -1.5s;
+}
+
+#outter1 {
+  animation-delay: -1.2s;
+}
+
+#center {
+  animation-delay: -2.2s;
+}
+
+#bottom-dots,
+#top-dots {
+  animation-duration: 7s;
+}
+
+#center-lines,
+#outter-center {
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
